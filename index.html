@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brinquedo de Sonhos | Roupas Infantis</title>
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fefefe;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cabeçalho e navegação */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b8b;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 10px;
+            height: 10px;
+            margin-right: 0px;
+            color: #6bc5d2;
+        }
+
+        .logo span {
+            color: #2f65ca;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 25px;
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #555;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 8px;
+            min-width: 70px;
+        }
+
+        .nav-icon:hover {
+            background-color: #f5f5f5;
+            color: #ff6b8b;
+            transform: translateY(-2px);
+        }
+
+        .nav-icon.active {
+            background-color: #fff0f3;
+            color: #ff6b8b;
+        }
+
+        .icon {
+            width: 35px;
+            height: 35px;
+            margin-bottom: 2px;
+            margin-right: 1px;
+        }
+
+        .nav-text {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Banner principal */
+        .hero {
+            background: linear-gradient(135deg, #ffd1dc 0%, #a2d2ff 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff6b8b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff4d73;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 139, 0.4);
+        }
+
+        /* Seção de categorias */
+        .categories {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #444;
+            font-size: 2rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+        }
+
+        .category-card h3 {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        /* Seção de destaques */
+        .featured {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #ff6b8b;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #ff6b8b;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho com navegação por ícones -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="assets/minhoquinha.svg" style="width: 180px; height: auto;" >
+                Infanto <span> Modas</span>
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" class="nav-icon active">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                            </svg>
+                            <span class="nav-text">Início</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l-5.5 9h11z"/>
+                                <circle cx="17.5" cy="17.5" r="4.5"/>
+                                <path d="M3 13.5h8v8H3z"/>
+                            </svg>
+                            <span class="nav-text">Categorias</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                            <span class="nav-text">Carrinho</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                            <span class="nav-text">Conta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                            <span class="nav-text">Buscar</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner principal -->
+    <section class="hero">
+        <div class="container">
+            <h1>Roupas Infantis que Encantam</h1>
+            <p>Descubra nossa coleção exclusiva de roupas infantis com designs encantadores, conforto e qualidade para os pequenos.</p>
+            <a href="#" class="btn">Ver Coleção</a>
+        </div>
+    </section>
+
+    <!-- Seção de categorias -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Nossas Categorias</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="#ff6b8b">
+                        <path d="M12 2l-5.5 9h11z"/>
+                        <circle cx="17.5" cy="17.5" r="4.5"/>
+                        <path d="M3 13.5h8v8H3z"/>
+                    </svg>
+                    <h3>Meninas</h3>
+                    <p>Vestidos, saias e conjuntos encantadores</p>
+                </div>
+                <div class="category-card">
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="#6bc5d2">
+                        <path d="M12 2l-5.5 9h11z"/>
+                        <circle cx="17.5" cy="17.5" r="4.5"/>
+                        <path d="M3 13.5h8v8H3z"/>
+                    </svg>
+                    <h3>Meninos</h3>
+                    <p>Camisetas, calças e conjuntos modernos</p>
+                </div>
+                <div class="category-card">
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="#ffb347">
+                        <path d="M12 2l-5.5 9h11z"/>
+                        <circle cx="17.5" cy="17.5" r="4.5"/>
+                        <path d="M3 13.5h8v8H3z"/>
+                    </svg>
+                    <h3>Bebês</h3>
+                    <p>Roupas confortáveis para os pequeninos</p>
+                </div>
+                <div class="category-card">
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="#a2d2ff">
+                        <path d="M12 2l-5.5 9h11z"/>
+                        <circle cx="17.5" cy="17.5" r="4.5"/>
+                        <path d="M3 13.5h8v8H3z"/>
+                    </svg>
+                    <h3>Acessórios</h3>
+                    <p>Toucas, meias e acessórios divertidos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de produtos em destaque -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Produtos em Destaque</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        Vestido Florido
+                    </div>
+                    <div class="product-info">
+                        <h3>Vestido Infantil Florido</h3>
+                        <p>Vestido com estampa de flores, ideal para ocasiões especiais.</p>
+                        <div class="price">R$ 59,90</div>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        Conjunto Menino
+                    </div>
+                    <div class="product-info">
+                        <h3>Conjunto Esportivo</h3>
+                        <p>Conjunto confortável para o dia a dia e brincadeiras.</p>
+                        <div class="price">R$ 79,90</div>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        Macacão Bebê
+                    </div>
+                    <div class="product-info">
+                        <h3>Macacão de Bebê</h3>
+                        <p>Macacão confortável com fechamento prático.</p>
+                        <div class="price">R$ 45,90</div>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        Pijama Unissex
+                    </div>
+                    <div class="product-info">
+                        <h3>Pijama Estampado</h3>
+                        <p>Pijama divertido com estampa de personagens.</p>
+                        <div class="price">R$ 39,90</div>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Brinquedo de Sonhos</h3>
+                    <p>Especialistas em roupas infantis de qualidade, conforto e estilo.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Produtos</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categorias</h3>
+                    <ul>
+                        <li><a href="#">Meninas</a></li>
+                        <li><a href="#">Meninos</a></li>
+                        <li><a href="#">Bebês</a></li>
+                        <li><a href="#">Acessórios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>Email: contato@brinquedodesonhos.com</li>
+                        <li>Telefone: (11) 1234-5678</li>
+                        <li>Endereço: Rua das Flores, 123 - São Paulo, SP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Infanto Modas. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Adiciona interatividade aos ícones de navegação
+        document.addEventListener('DOMContentLoaded', function() {
+            const navIcons = document.querySelectorAll('.nav-icon');
+            
+            navIcons.forEach(icon => {
+                icon.addEventListener('click', function(e) {
+                    // Remove a classe active de todos os ícones
+                    navIcons.forEach(i => i.classList.remove('active'));
+                    // Adiciona a classe active ao ícone clicado
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
